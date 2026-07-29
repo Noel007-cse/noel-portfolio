@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #05060a;
+  --color-fg: #f5f7fa;
+  --color-accent: #22d3ee;
+  --color-spark-a: #a3e635;
+  --color-spark-b: #e879f9;
+  --color-hud: #6b7280;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: "Inter Tight", sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #000;
+}
+
+.hud-mono {
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.05em;
+}
