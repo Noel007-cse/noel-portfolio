@@ -8,7 +8,7 @@ export function Hud() {
   const fadeIntervalRef = useRef<number | null>(null)
 
   useEffect(() => {
-    const audio = new Audio('/audio/ambient.mp3')
+    const audio = new Audio(`${import.meta.env.BASE_URL}audio/ambient.mp3`)
     audio.loop = true
     audio.volume = 0
     audioRef.current = audio

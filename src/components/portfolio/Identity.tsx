@@ -39,7 +39,10 @@ export function Identity() {
           style={{ opacity }}
           className="relative aspect-square w-full max-w-md justify-self-center md:justify-self-end"
         >
-          <ImageDust src="/images/noel.png" className="h-full w-full" />
+          <ImageDust
+  src={`${import.meta.env.BASE_URL}images/noel.png`}
+  className="h-full w-full"
+/>
         </motion.div>
       </div>
     </section>
