@@ -4,6 +4,7 @@ import { routeTree } from './routeTree.gen'
 
 const router = createRouter({
   routeTree,
+  basepath: '/noel-portfolio',
   defaultPreload: 'intent',
   scrollRestoration: true,
 })
