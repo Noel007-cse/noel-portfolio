@@ -1,194 +1,187 @@
-Welcome to your new TanStack Start app!
+<div align="center">
 
-# Getting Started
+<img src="https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+<img src="https://img.shields.io/badge/Next.js-14+-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+<img src="https://img.shields.io/badge/TypeScript-5+-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+<img src="https://img.shields.io/badge/TailwindCSS-3+-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
 
-To run this application:
+<br /><br />
+
+# 👋 Noel J Cherian — Portfolio
+
+### *Building at the intersection of Web, AI, and IoT.*
+
+**My personal portfolio website — showcasing projects, experience, and skills as a Computer Science undergraduate specializing in full-stack development and IoT.**
+
+[About](#-about) • [Projects](#-projects) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Structure](#-project-structure) • [Contact](#-contact)
+
+</div>
+
+---
+
+## 🧑‍💻 About
+
+This repository contains the source code for my personal portfolio website — a single place to explore my work in web development, IoT, AI, and blockchain. The site highlights my experience as a Software Developer Intern, my hackathon-winning projects, and the tools I use to bring ideas to life.
+
+> *Motivated Computer Science undergraduate passionate about integrating AI and IoT to solve real-world problems.*
+
+---
+
+## ✨ Features
+
+- **Hero / Intro section** — quick summary, role, and call-to-action links (resume, GitHub, LinkedIn)
+- **About Me** — background, current role, and interests
+- **Experience timeline** — internship and work history
+- **Projects showcase** — filterable cards with tech stack tags, live links, and GitHub repos
+- **Skills grid** — languages, frameworks, tools, and concepts grouped by category
+- **Achievements** — hackathon wins and certifications
+- **Contact section** — email, phone, and social links
+- **Dark / light mode** toggle
+- **Fully responsive** — optimized for mobile, tablet, and desktop
+- **Smooth scroll & scroll-triggered animations**
+
+---
+
+## 🚀 Projects
+
+| Project | Description | Tech |
+|---|---|---|
+| **[LexCheck](https://lexcheck.vercel.app)** | Judgment-free, privacy-first legal awareness app helping Indian teens understand cybercrime and juvenile law risks via a RAG pipeline | Flutter, Claude/GPT-4o, RAG, Pinecone/ChromaDB |
+| **[Aaroha](https://github.com/Sreehari-P-S-10/hackquest)** | De-addiction support app for Kerala with an AI companion, live map of recovery centres, and breathwork tools | Flutter, Riverpod, Groq LLaMA, OpenStreetMap |
+| **[SecurePulse](https://securepulse-frontend.onrender.com)** | Unified AI-powered security scanning platform for websites, apps, and GitHub repos with real-time threat monitoring | React, Node.js, Python, Groq LLaMA, PostgreSQL |
+| **IoT Water Quality Monitor** | Real-time monitoring of salinity, pH, ORP, and temperature to prevent White Spot Virus in prawn farming | ESP32, Sensors, Cloud |
+| **Emotion Detection App** | Real-time facial emotion recognition using ML classification models | Python, OpenCV |
+| **Mini Projects Collection** | Smart Study Planner, Spacebook, Ethereum To-Do List, AI Interviewer, and more | Solidity, Web3.js, Python, MediaPipe, Flutter |
+
+> Full project details are pulled from `data/projects.ts` (or a CMS, if connected) and rendered dynamically on the Projects page.
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Framework** | Next.js 14+ (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS |
+| **Animations** | Framer Motion |
+| **Icons** | Lucide React |
+| **Deployment** | Vercel |
+| **Forms** | Resend / EmailJS (contact form) |
+| **Analytics** | Vercel Analytics (privacy-friendly) |
+
+> Update this table to match your actual stack once finalized (e.g. if using React + Vite instead of Next.js).
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js ≥ 18
+- npm / yarn / pnpm
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Noel007-cse/portfolio.git
+cd portfolio
+```
+
+### 2. Install dependencies
 
 ```bash
 npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+RESEND_API_KEY=your_resend_api_key_here
+```
+
+### 4. Run the development server
+
+```bash
 npm run dev
 ```
 
-# Building For Production
+Visit `http://localhost:3000` to view the site locally.
 
-To build this application for production:
+### 5. Build for production
 
 ```bash
 npm run build
+npm start
 ```
 
-## Styling
+---
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+## 🏗 Project Structure
 
-### Removing Tailwind CSS
-
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Remove `@tailwindcss/vite` and `tailwindcss` from `package.json`
-
-## Linting & Formatting
-
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
-```bash
-npm run lint
-npm run format
-npm run check
+```
+portfolio/
+├── app/
+│   ├── page.tsx                # Home / landing page
+│   ├── projects/page.tsx       # Projects showcase
+│   ├── about/page.tsx          # About page
+│   └── layout.tsx              # Root layout
+├── components/
+│   ├── Hero.tsx
+│   ├── About.tsx
+│   ├── Experience.tsx
+│   ├── ProjectCard.tsx
+│   ├── SkillsGrid.tsx
+│   ├── Achievements.tsx
+│   ├── Contact.tsx
+│   └── Navbar.tsx
+├── data/
+│   ├── projects.ts             # Project details (title, tech, links)
+│   ├── experience.ts           # Work experience entries
+│   └── skills.ts               # Skills grouped by category
+├── public/
+│   ├── resume.pdf
+│   └── images/
+└── styles/
+    └── globals.css
 ```
 
+---
 
+## 🎓 Education
 
-## Routing
+**B.Tech Computer Science & Engineering** — GEC Thrissur (2023 – Present) · CGPA: 9.09
 
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
+## 🏆 Achievements
 
-### Adding A Route
+- 🥈 2nd Prize — Hack@Arch 4.0, National Level Hackathon (HackQuest), GEC Thrissur
+- 🥈 2nd Prize — Takedown 2.0, State Level Hackathon (IEDC TechFest), Universal Engineering College, Thrissur
+- 📜 NPTEL — Internet of Things (Online Certification)
 
-To add a new route to your application just add a new file in the `./src/routes` directory.
+---
 
-TanStack will automatically generate the content of the route file for you.
+## 📬 Contact
 
-Now that you have two routes you can use a `Link` component to navigate between them.
+- **Email:** noeljcherian07@gmail.com
+- **Phone:** 7593954770
+- **Location:** Thrissur, Kerala, India
+- **LinkedIn:** [linkedin.com/in/noeljcherian](#)
+- **GitHub:** [github.com/Noel007-cse](https://github.com/Noel007-cse)
 
-### Adding Links
+---
 
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
+## 📄 License
 
-```tsx
-import { Link } from "@tanstack/react-router";
-```
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-Then anywhere in your JSX you can use it like so:
+---
 
-```tsx
-<Link to="/about">About</Link>
-```
+<div align="center">
 
-This will create a link that will navigate to the `/about` route.
+**Designed & built by Noel J Cherian**
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+</div>
