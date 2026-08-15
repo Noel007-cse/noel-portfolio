@@ -1,8 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export function Hud() {
   const [time, setTime] = useState('')
   const [coords, setCoords] = useState({ x: 0, y: 0 })
+  const [soundOn, setSoundOn] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const fadeIntervalRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    const audio = new Audio('/audio/ambient.mp3')
+    audio.loop = true
+    audio.volume = 0
+    audioRef.current = audio
+    return () => {
+      audio.pause()
+      if (fadeIntervalRef.current) window.clearInterval(fadeIntervalRef.current)
+    }
+  }, [])
 
   useEffect(() => {
     const updateClock = () => {
@@ -24,6 +38,37 @@ export function Hud() {
     return () => window.removeEventListener('mousemove', onMove)
   }, [])
 
+  const fadeTo = (target: number, onDone?: () => void) => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (fadeIntervalRef.current) window.clearInterval(fadeIntervalRef.current)
+    const step = 0.03
+    fadeIntervalRef.current = window.setInterval(() => {
+      const next = audio.volume + (target > audio.volume ? step : -step)
+      if ((target > audio.volume && next >= target) || (target < audio.volume && next <= target)) {
+        audio.volume = target
+        if (fadeIntervalRef.current) window.clearInterval(fadeIntervalRef.current)
+        onDone?.()
+      } else {
+        audio.volume = next
+      }
+    }, 60)
+  }
+
+  const toggleSound = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (!soundOn) {
+      audio.currentTime = 0
+      audio.play().catch(() => {})
+      fadeTo(0.4)
+      setSoundOn(true)
+    } else {
+      fadeTo(0, () => audio.pause())
+      setSoundOn(false)
+    }
+  }
+
   return (
     <>
       {/* Top bar */}
@@ -32,27 +77,22 @@ export function Hud() {
           NOEL<span className="text-[var(--color-accent)]">.</span>J.C
         </div>
         <nav className="hud-mono pointer-events-auto flex items-center gap-8 text-[11px] tracking-[0.2em] uppercase text-[var(--color-hud)]">
-          <a href="#work" className="transition-colors hover:text-[var(--color-fg)]">
-            Work
-          </a>
-          <a href="#about" className="transition-colors hover:text-[var(--color-fg)]">
-            About
-          </a>
-          <a href="#contact" className="transition-colors hover:text-[var(--color-fg)]">
-            Contact
-          </a>
-          <span className="cursor-pointer transition-colors hover:text-[var(--color-fg)]">
-            Sound[·]
-          </span>
+          <a href="#work" className="transition-colors hover:text-[var(--color-fg)]">Work</a>
+          <a href="#about" className="transition-colors hover:text-[var(--color-fg)]">About</a>
+          <a href="#contact" className="transition-colors hover:text-[var(--color-fg)]">Contact</a>
+          <button
+            onClick={toggleSound}
+            className={`cursor-pointer transition-colors hover:text-[var(--color-fg)] ${soundOn ? 'text-[var(--color-accent)]' : ''}`}
+          >
+            Sound[{soundOn ? '●' : '·'}]
+          </button>
         </nav>
       </div>
 
       {/* Bottom bar */}
       <div className="hud-mono pointer-events-none fixed bottom-0 left-0 z-50 flex w-full items-center justify-between px-6 py-5 text-[11px] tracking-[0.15em] text-[var(--color-hud)] md:px-10">
         <span>GMT+5:30 IN {time}</span>
-        <span>
-          {String(coords.x).padStart(4, '0')} X {String(coords.y).padStart(4, '0')} Y
-        </span>
+        <span>{String(coords.x).padStart(4, '0')} X {String(coords.y).padStart(4, '0')} Y</span>
       </div>
 
       {/* Crosshair guides */}

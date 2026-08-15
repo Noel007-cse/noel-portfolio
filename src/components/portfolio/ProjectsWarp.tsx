@@ -20,15 +20,29 @@ function ProjectCard({
 
   const scale = useTransform(progress, [start, mid, end], [0.3, 1, 1.8])
   const opacity = useTransform(progress, [start, start + slice * 0.15, mid, end - slice * 0.15, end], [0, 1, 1, 1, 0])
-  const blur = useTransform(progress, [start, mid, end], [8, 0, 6])
+
+  const blur = useTransform(
+    progress,
+    [start, start + slice * 0.25, end - slice * 0.1, end],
+    [8, 0, 0, 6],
+  )
   const filter = useTransform(blur, (b) => `blur(${b}px)`)
+
+  const glow = useTransform(progress, [start, mid, end], [0, 0.65, 0])
+  const boxShadow = useTransform(glow, (g) => `0 0 90px 25px rgba(163, 230, 53, ${g})`)
+
+  // Only let the card intercept clicks while it's actually visible/sharp
+  const pointerEvents = useTransform(opacity, (o) => (o > 0.5 ? 'auto' : 'none'))
 
   return (
     <motion.div
-      style={{ scale, opacity, filter, zIndex: COUNT - index }}
+      style={{ scale, opacity, filter, pointerEvents }}
       className="absolute inset-0 flex items-center justify-center"
     >
-      <div className="w-full max-w-xl rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm">
+      <motion.div
+        style={{ boxShadow }}
+        className="w-full max-w-xl rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm"
+      >
         <div className="hud-mono mb-3 flex flex-wrap gap-2 text-[10px] tracking-[0.2em] text-[var(--color-accent)] uppercase">
           {project.tags.map((tag) => (
             <span key={tag} className="rounded-full border border-[var(--color-accent)]/30 px-2 py-1">
@@ -50,11 +64,10 @@ function ProjectCard({
             </a>
           )}
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   )
 }
-
 export function ProjectsWarp() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -63,7 +76,7 @@ export function ProjectsWarp() {
   })
 
   return (
-    <section ref={containerRef} style={{ height: `${COUNT * 100}vh` }} className="relative bg-black">
+    <section id="work" ref={containerRef} style={{ height: `${COUNT * 100}vh` }} className="relative bg-black">
       <div className="sticky top-0 h-screen w-full overflow-hidden px-6">
         <p className="hud-mono absolute top-10 left-1/2 z-50 -translate-x-1/2 text-[11px] tracking-[0.3em] text-[var(--color-accent)] uppercase">
           Projects

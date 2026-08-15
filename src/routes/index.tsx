@@ -3,6 +3,8 @@ import { Hud } from '#/components/portfolio/Hud'
 import { WarpHero } from '#/components/portfolio/WarpHero'
 import { Identity } from '#/components/portfolio/Identity'
 import { ProjectsWarp } from '#/components/portfolio/ProjectsWarp'
+import { Experience } from '#/components/portfolio/Experience'
+import { Contact } from '#/components/portfolio/Contact'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -13,6 +15,8 @@ function Home() {
       <WarpHero />
       <Identity />
       <ProjectsWarp />
+      <Experience />
+      <Contact />
     </div>
   )
 }

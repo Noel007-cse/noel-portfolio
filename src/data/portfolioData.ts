@@ -22,7 +22,7 @@ export const projects = [
     pitch:
       'A recovery companion app for Kerala — AI chat support, a live map of de-addiction centers, and community tools for individuals, families, and NGOs.',
     url: '',
-    repo: 'https://github.com/Sreehari-P-S-10/hackquest',
+    repo: 'https://github.com/Noel007-cse/hackquest_hackathon',
   },
   {
     id: 'securepulse',
@@ -31,7 +31,7 @@ export const projects = [
     pitch:
       'A unified AI-powered security scanner for websites, apps, and GitHub repos, with real-time threat monitoring and a one-click Chrome extension.',
     url: 'https://securepulse-frontend.onrender.com',
-    repo: '',
+    repo: 'https://github.com/Noel007-cse/Securepulse',
   },
   {
     id: 'qflow',
@@ -40,7 +40,7 @@ export const projects = [
     pitch:
       'A production-grade multi-domain queue management platform — real-time queue logic across web and mobile, built during my internship at Exalture.',
     url: '',
-    repo: 'https://github.com/jyothish6190/qflow-mobile',
+    repo: 'https://github.com/Noel007-cse/qflow-mobile',
   },
   {
     id: 'water-monitor',
@@ -48,7 +48,7 @@ export const projects = [
     tags: ['ESP32', 'Sensors', 'Cloud'],
     pitch:
       'Real-time monitoring of salinity, pH, ORP and temperature to prevent White Spot Virus in prawn farming.',
-    url: '',
+    url: 'https://prawn-farming.vercel.app',
     repo: 'https://github.com/Noel007-cse',
   },
   {
@@ -57,7 +57,7 @@ export const projects = [
     tags: ['Python', 'OpenCV'],
     pitch: 'Real-time facial emotion recognition using ML classification models.',
     url: '',
-    repo: 'https://github.com/jeffmathew4545/FER',
+    repo: 'https://github.com/jeffmathew4545/FER_with_model_creation',
   },
 ] as const
 
@@ -107,3 +107,10 @@ export const stack = {
   ML: ['Python', 'OpenCV', 'MediaPipe'],
   Other: ['Flutter', 'Solidity', 'Web3.js', 'Git'],
 } as const
+
+export const contact = {
+  email: 'noeljcherian07@gmail.com',
+  github: 'https://github.com/Noel007-cse',
+  linkedin: 'https://linkedin.com/in/noel-j-cherian',
+  instagram: 'https://instagram.com/noel_j_cherian', // replace with your real handle
+}

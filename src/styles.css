@@ -36,3 +36,6 @@ body {
   font-family: "JetBrains Mono", monospace;
   letter-spacing: 0.05em;
 }
+html {
+  scroll-behavior: smooth;
+}
